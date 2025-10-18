@@ -5,10 +5,10 @@
     <parent>
         <groupId>io.github.technic47</groupId>
         <artifactId>shop-spring-boot-starter</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
     </parent>
     <artifactId>address</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Address_module</name>
     <description>Address_module</description>
 
