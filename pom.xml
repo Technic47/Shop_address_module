@@ -30,11 +30,6 @@
             <artifactId>data-model</artifactId>
             <version>${data-model.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.github.technic47</groupId>
-            <artifactId>data-model-dto</artifactId>
-            <version>${data-model-dto.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
