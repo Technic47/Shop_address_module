@@ -3,8 +3,8 @@ package ru.kuznetsov.shop.address.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.kuznetsov.shop.data.dto.AddressDto;
 import ru.kuznetsov.shop.data.service.AddressService;
+import ru.kuznetsov.shop.represent.dto.AddressDto;
 
 import java.util.List;
 
