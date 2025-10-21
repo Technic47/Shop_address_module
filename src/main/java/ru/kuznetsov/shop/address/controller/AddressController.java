@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.kuznetsov.shop.data.service.AddressService;
 import ru.kuznetsov.shop.represent.dto.AddressDto;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -28,6 +29,13 @@ public class AddressController {
     @PostMapping
     public ResponseEntity<AddressDto> create(@RequestBody AddressDto addressDto) {
         return ResponseEntity.ok(addressService.add(addressDto));
+    }
+
+    @PostMapping("/batch")
+    public ResponseEntity<List<AddressDto>> createBatch(@RequestBody Collection<AddressDto> addressDtoCollection) {
+        return ResponseEntity.ok(addressDtoCollection.stream()
+                .map(addressService::add)
+                .toList());
     }
 
     @DeleteMapping("/{id}")
