@@ -1,0 +1,1 @@
+TRUNCATE shop_test.public.address RESTART IDENTITY CASCADE;
