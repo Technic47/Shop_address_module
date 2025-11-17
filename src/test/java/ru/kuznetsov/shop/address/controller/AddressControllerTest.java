@@ -3,7 +3,6 @@ package ru.kuznetsov.shop.address.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.servlet.http.Cookie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -20,7 +19,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.util.LinkedMultiValueMap;
 import ru.kuznetsov.shop.represent.dto.AddressDto;
 
 import java.util.ArrayList;
@@ -43,12 +41,12 @@ class AddressControllerTest {
     private static final String SCHEME = "address";
 
     @Autowired
-    protected EntityManagerFactory entityManagerFactory;
+    private EntityManagerFactory entityManagerFactory;
 
     @Autowired
-    protected MockMvc mockMvc;
+    private MockMvc mockMvc;
     @Autowired
-    protected ObjectMapper om;
+    private ObjectMapper om;
 
     @BeforeEach
     void setUp() {

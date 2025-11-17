@@ -1,7 +1,4 @@
 spring:
-  application:
-    name: Address_module
-
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://host.docker.internal:5432/shop_test
@@ -14,7 +11,7 @@ spring:
   kafka:
     bootstrap-servers: host.docker.internal:9092
     consumer:
-      group-id: shop_address
+      group-id: test
 
   cache:
     type: redis
