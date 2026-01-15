@@ -8,8 +8,8 @@ import ru.kuznetsov.shop.data.config.SpringConfig;
 import ru.kuznetsov.shop.parameter.config.ParameterConfig;
 
 @SpringBootApplication
-@Import({SpringConfig.class, ParameterConfig.class})
 @EnableDiscoveryClient
+@Import({SpringConfig.class, ParameterConfig.class})
 public class AddressModuleApplication {
 
     public static void main(String[] args) {
