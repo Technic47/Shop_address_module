@@ -3,27 +3,36 @@ package ru.kuznetsov.shop.address.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.kuznetsov.shop.address.api.AddressControllerApi;
 import ru.kuznetsov.shop.data.service.AddressService;
 import ru.kuznetsov.shop.represent.dto.AddressDto;
 
 import java.util.Collection;
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.NO_CONTENT;
+
 @RestController
 @RequestMapping("/address")
 @RequiredArgsConstructor
-public class AddressController {
+public class AddressController implements AddressControllerApi {
 
     private final AddressService addressService;
 
     @GetMapping("/{id}")
     public ResponseEntity<AddressDto> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(addressService.findById(id));
+        AddressDto byId = addressService.findById(id);
+        return byId == null ?
+                ResponseEntity.status(NO_CONTENT).build()
+                : ResponseEntity.ok(byId);
     }
 
     @GetMapping()
     public ResponseEntity<List<AddressDto>> getAll() {
-        return ResponseEntity.ok(addressService.findAll());
+        List<AddressDto> found = addressService.findAll();
+        return found.isEmpty() ?
+                ResponseEntity.status(NO_CONTENT).build()
+                : ResponseEntity.ok(found);
     }
 
     @PostMapping
