@@ -1,4 +1,4 @@
-TRUNCATE shop_test.public.address RESTART IDENTITY CASCADE;
+TRUNCATE TABLE address;
 
-insert into shop_test.public.address(city, street, house, created, updated)
-values ('Москва', 'Тестовая ул.', '123', NOW(), NOW())
+INSERT INTO address(city, street, house, created, updated)
+VALUES ('Москва', 'Тестовая ул.', '123', NOW(), NOW());

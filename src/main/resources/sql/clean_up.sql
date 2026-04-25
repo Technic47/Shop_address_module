@@ -1,1 +1,1 @@
-TRUNCATE shop_test.public.address RESTART IDENTITY CASCADE;
+TRUNCATE TABLE address;

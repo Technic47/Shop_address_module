@@ -24,7 +24,8 @@ import ru.kuznetsov.shop.represent.dto.AddressDto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -139,9 +140,12 @@ class AddressControllerTest {
         String json = mvcResult.getResponse().getContentAsString();
         Long id = om.readValue(json, AddressDto.class).getId();
 
-        sendRequest(HttpMethod.DELETE, API_PATH + "/" + id, null);
+        sendRequest(HttpMethod.DELETE, API_PATH + "/" + id, null)
+                .andExpect(status().isOk());
 
-        assertThrows(Exception.class, () -> sendRequest(HttpMethod.GET, API_PATH + "/" + id, null));
+        sendRequest(HttpMethod.GET, API_PATH + "/" + id, null)
+                .andDo(print())
+                .andExpect(status().isNoContent());
     }
 
     private AddressDto getMockDto() {
@@ -160,14 +164,13 @@ class AddressControllerTest {
     }
 
     protected Integer getItemCount() {
-        Integer deviceCount;
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            deviceCount = (Integer) entityManager
-                    .createNativeQuery("select count(*) from " + SCHEME, Integer.class)
+            Object result = entityManager
+                    .createNativeQuery("select count(*) from " + SCHEME)
                     .getSingleResult();
+            return ((Number) result).intValue();
         } catch (Exception e) {
-            deviceCount = 0;
+            return 0;
         }
-        return deviceCount;
     }
 }

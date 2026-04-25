@@ -1,12 +1,11 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://host.docker.internal:5432/shop_test
-    username: postgres
-    password: 1999
-  jpa:
-    generate-ddl: true
-    open-in-view: false
+  application:
+    name: address-service
+  config:
+    import: ''
+
+  main:
+    allow-bean-definition-overriding: true
 
   kafka:
     bootstrap-servers: host.docker.internal:9092
@@ -14,9 +13,24 @@ spring:
       group-id: test
 
   cache:
-    type: redis
+    type: none
 
   data:
     redis:
-      host: host.docker.internal
+      host: localhost
       port: 6379
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+
+eureka:
+  client:
+    enabled: false

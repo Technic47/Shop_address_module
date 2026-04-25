@@ -15,7 +15,6 @@
     <description>Address_module</description>
 
     <properties>
-        <skipTests>true</skipTests>
         <app.main-class>ru.kuznetsov.shop.address.AddressModuleApplication</app.main-class>
         <app.build-finalName>Address_module</app.build-finalName>
     </properties>
@@ -52,6 +51,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
